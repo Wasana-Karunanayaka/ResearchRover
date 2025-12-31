@@ -45,4 +45,5 @@ Since this is a client-side prototype, no backend server is required.
 ## 📝 Author
 
 **Wasana Karunanayaka**
+
 *Note: This project is intended for educational purposes.*
