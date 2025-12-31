@@ -1,0 +1,306 @@
+<!-- 
+    Project: Research Rover
+    Author: @author Wasana Karunanayaka
+    Description: Main entry point for the Research Rover SPA. Handles the view structure (Home, Auth, Dashboard) and core layout.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Rover - Bridge the Gap</title>
+    <meta name="description" content="Dynamic marketplace for research collaboration across Sri Lanka's institutions.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Ionicons for icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo" id="nav-home">
+                <ion-icon name="planet-outline"></ion-icon>
+                Research Rover
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#opportunities" id="nav-opportunities">Find Research</a></li>
+                    <li><a href="#" id="nav-post-project">Post Project</a></li>
+                    <!-- Dynamic Auth Link -->
+                    <li id="auth-nav-item"><a href="#login" class="login-btn" id="nav-login">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- VIEW: HOME (Landing Page) -->
+        <div id="view-home" class="view active">
+            <!-- Hero Section -->
+            <section id="hero">
+                <div class="hero-overlay"></div>
+                <div class="container hero-content">
+                    <h1>Bridge the Gap in Sri Lanka's Research Ecosystem</h1>
+                    <p>Connecting ambitious students with groundbreaking research opportunities across the island.</p>
+                    <div class="hero-buttons">
+                        <a href="#opportunities" class="btn btn-primary" id="hero-btn-student">I'm a Student</a>
+                        <a href="#" class="btn btn-secondary" id="hero-btn-researcher">I'm a Researcher</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section id="stats">
+                <div class="container stats-container">
+                    <div class="stat-item">
+                        <h2 class="counter" data-target="16">0</h2>
+                        <p>Universities</p>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="counter" data-target="100000">0</h2>
+                        <p>Students</p>
+                    </div>
+                    <div class="stat-item">
+                        <h2 class="counter" data-target="60000">0</h2>
+                        <p>Researchers</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Live Opportunities Board -->
+            <section id="opportunities">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Live Research Opportunities</h2>
+                        <p>Explore projects seeking brilliant minds.</p>
+                    </div>
+
+                    <div class="search-filter-bar">
+                        <div class="search-box">
+                            <ion-icon name="search-outline"></ion-icon>
+                            <input type="text" id="search-input"
+                                placeholder="Search projects, fields, or researchers...">
+                        </div>
+                        <div class="filter-box">
+                            <select id="category-filter">
+                                <option value="All">All Fields</option>
+                                <option value="Biology">Biology</option>
+                                <option value="IT">IT & Computing</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Social Science">Social Science</option>
+                                <option value="Agriculture">Agriculture</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="projects-grid" id="projects-grid">
+                        <!-- Project cards will be injected here by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Benefits Section -->
+            <section id="benefits">
+                <div class="container">
+                    <div class="benefits-grid">
+                        <div class="benefit-col student-benefit">
+                            <div class="benefit-icon">
+                                <ion-icon name="school-outline"></ion-icon>
+                            </div>
+                            <h3>For Students</h3>
+                            <p class="problem">"Difficulty finding research opportunities aligned with skills..."</p>
+                            <p class="solution">Gain real-world academic experience, mentorship, and credentials to
+                                boost your career.</p>
+                        </div>
+                        <div class="benefit-col researcher-benefit">
+                            <div class="benefit-icon">
+                                <ion-icon name="flask-outline"></ion-icon>
+                            </div>
+                            <h3>For Researchers</h3>
+                            <p class="problem">"Challenges in identifying suitable student collaborators..."</p>
+                            <p class="solution">Dynamic marketplace for research collaboration across Sri Lanka's
+                                institutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VIEW: AUTH (Login) -->
+        <div id="view-auth" class="view hidden">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-role="student">Student Login</button>
+                        <button class="auth-tab" data-role="researcher">Researcher Login</button>
+                    </div>
+                    <div class="auth-content">
+                        <h2 id="auth-title">Welcome Student</h2>
+                        <p>Log in to manage your applications.</p>
+                        <form id="login-form">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="student@university.ac.lk" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary full-width">Login to Dashboard</button>
+                        </form>
+                        <p class="auth-footer">Don't have an account? <a href="#">Register here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW: DASHBOARD -->
+        <div id="view-dashboard" class="view hidden">
+            <div class="dashboard-layout">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="sidebar-header">
+                        <div class="user-avatar">
+                            <ion-icon name="person"></ion-icon>
+                        </div>
+                        <div class="user-info">
+                            <h4 id="dash-user-name">User Name</h4>
+                            <span id="dash-user-role">Student</span>
+                        </div>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li><a href="#" class="active"><ion-icon name="grid-outline"></ion-icon> Overview</a></li>
+                        <li id="menu-applications"><a href="#"><ion-icon name="folder-open-outline"></ion-icon> My
+                                Applications</a></li>
+                        <li id="menu-projects"><a href="#"><ion-icon name="list-outline"></ion-icon> My Projects</a>
+                        </li>
+                        <li><a href="#"><ion-icon name="settings-outline"></ion-icon> Settings</a></li>
+                    </ul>
+                </aside>
+
+                <!-- Dashboard Content -->
+                <div class="dashboard-content">
+                    <div class="dashboard-header">
+                        <h2 id="dash-welcome">Dashboard</h2>
+                        <button class="btn btn-primary" id="dash-action-btn">Browse Projects</button>
+                    </div>
+
+                    <div class="dashboard-stats" id="dashboard-stats">
+                        <!-- Injected by JS based on Role -->
+                    </div>
+
+                    <div class="dashboard-section">
+                        <h3 id="dash-list-title">My Recent Activity</h3>
+                        <div class="projects-grid" id="dashboard-list">
+                            <!-- Injected by JS -->
+                            <div class="empty-state">
+                                <p>No activity yet. Start exploring!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <ion-icon name="planet-outline"></ion-icon>
+                Research Rover
+            </div>
+            <div class="copyright">
+                &copy; 2025 Research Rover. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Post Project Modal (Generic) -->
+    <div id="modal-post-project" class="modal-overlay">
+        <div class="modal">
+            <button class="close-modal close-modal-btn">&times;</button>
+            <div class="modal-header">
+                <h2>Post a Research Project</h2>
+                <p>Find the perfect student assistant for your work.</p>
+            </div>
+            <form id="post-project-form">
+                <div class="form-group">
+                    <label for="project-title">Project Title</label>
+                    <input type="text" id="project-title" placeholder="e.g. AI for Tea Plantations" required>
+                </div>
+                <div class="form-group">
+                    <label for="project-field">Field of Study</label>
+                    <select id="project-field" required>
+                        <option value="Biology">Biology</option>
+                        <option value="IT">IT & Computing</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Social Science">Social Science</option>
+                        <option value="Agriculture">Agriculture</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="researcher-name">Researcher Name</label>
+                    <input type="text" id="researcher-name" placeholder="Dr. S. Perera" required>
+                </div>
+                <div class="form-group">
+                    <label for="project-description">Description</label>
+                    <textarea id="project-description" rows="4"
+                        placeholder="Briefly describe the research goals and student role..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary full-width">Post Opportunity</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Application Detail Modal -->
+    <div id="modal-project-detail" class="modal-overlay">
+        <div class="modal">
+            <button class="close-modal close-modal-btn">&times;</button>
+            <div class="modal-header">
+                <h2 id="detail-title">Project Title</h2>
+                <span class="project-tag" id="detail-tag">Tag</span>
+            </div>
+            <div class="modal-body">
+                <p class="modal-subtitle" id="detail-researcher">Researcher Name</p>
+                <div class="modal-description">
+                    <h4>Description</h4>
+                    <p id="detail-description">Full description goes here.</p>
+                </div>
+                <div class="modal-requirements">
+                    <h4>Requirements</h4>
+                    <ul id="detail-requirements">
+                        <li>Relevant academic background</li>
+                        <li>Commitment for 3 months</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close-modal-btn">Cancel</button>
+                <button class="btn btn-primary" id="confirm-application-btn">Confirm Application</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <ion-icon name="checkmark-circle"></ion-icon>
+            <span id="toast-message">Action Successful!</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
